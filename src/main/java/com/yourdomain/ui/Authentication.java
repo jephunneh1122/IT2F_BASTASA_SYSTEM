@@ -33,13 +33,19 @@ public class Authentication {
             String choice = InputHelper.readLine(ctx.scanner(), "Enter choice: ");
 
             switch (choice) {
-                case "1" -> login();
-                case "2" -> register();
+                case "1" -> {
+                    login();
+                }
+                case "2" -> {
+                    register();
+                }
                 case "3" -> {
                     System.out.println("\nExiting system... Thank you!");
                     running = false;
                 }
-                default -> System.out.println("\nINVALID CHOICE: Please enter 1, 2, or 3.");
+                default -> {
+                    System.out.println("\nINVALID CHOICE: Please enter 1, 2, or 3.");
+                }
             }
         }
     }
@@ -87,10 +93,18 @@ public class Authentication {
     /** Sends the logged-in user to the menu that matches their assigned role. */
     private void routeToMenu(User user) {
         switch (user.role()) {
-            case "ADMIN" -> new AdminMenu(ctx, user).show();
-            case "STAFF" -> new StaffMenu(ctx, user).show();
-            case "DELIVERY" -> new DeliveryMenu(ctx, user).show();
-            default -> System.out.println("Unknown role '" + user.role() + "'. Contact the administrator.");
+            case "ADMIN" -> {
+                new AdminMenu(ctx, user).show();
+            }
+            case "STAFF" -> {
+                new StaffMenu(ctx, user).show();
+            }
+            case "DELIVERY" -> {
+                new DeliveryMenu(ctx, user).show();
+            }
+            default -> {
+                System.out.println("Unknown role '" + user.role() + "'. Contact the administrator.");
+            }
         }
     }
 
@@ -123,9 +137,15 @@ public class Authentication {
 
         String role;
         switch (roleChoice) {
-            case "1" -> role = "ADMIN";
-            case "2" -> role = "STAFF";
-            case "3" -> role = "DELIVERY";
+            case "1" -> {
+                role = "ADMIN";
+            }
+            case "2" -> {
+                role = "STAFF";
+            }
+            case "3" -> {
+                role = "DELIVERY";
+            }
             default -> {
                 System.out.println("Registration cancelled.");
                 return;
@@ -142,10 +162,18 @@ public class Authentication {
 
     static String roleLabel(String role) {
         return switch (role) {
-            case "ADMIN" -> "Administrator";
-            case "STAFF" -> "Staff/Cashier";
-            case "DELIVERY" -> "Delivery Staff";
-            default -> role;
+            case "ADMIN" -> {
+                yield "Administrator";
+            }
+            case "STAFF" -> {
+                yield "Staff/Cashier";
+            }
+            case "DELIVERY" -> {
+                yield "Delivery Staff";
+            }
+            default -> {
+                yield role;
+            }
         };
     }
 }
