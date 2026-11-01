@@ -1,0 +1,14 @@
+# Build output
+target/
+
+# Runtime files created by the app
+*.db
+reports/
+
+# IDE files
+.idea/
+*.iml
+.vscode/
+.classpath
+.project
+.settings/
